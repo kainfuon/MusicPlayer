@@ -1,12 +1,76 @@
 package com.example.musicPlayer
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.example.musicPlayer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestRuntimePermission()
         setTheme(R.style.Theme_MusicPlayer)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.shuffleBtn.setOnClickListener {
+            val intent = Intent(this@MainActivity, PlayerActivity::class.java)
+            startActivity(intent)
+        }
+        binding.favouriteBtn.setOnClickListener {
+            startActivity(Intent(this@MainActivity, FavouriteActivity::class.java))
+        }
+        binding.playlistBtn.setOnClickListener {
+            startActivity(Intent(this@MainActivity, PlaylistActivity::class.java))
+        }
     }
+
+    // For requesting permission
+//    private fun requestRuntimePermission() {
+//        if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//            != PackageManager.PERMISSION_GRANTED)
+//        {
+//            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 13)
+//        }
+//    }
+    private fun requestRuntimePermission() :Boolean{
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU){
+            if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 13)
+                return false
+            }
+        }
+        //android 13 permission request
+        else if(Build.VERSION.SDK_INT == Build.VERSION_CODES.TIRAMISU){
+            if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_MEDIA_AUDIO)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_MEDIA_AUDIO), 13)
+                return false
+            }
+        }
+        return true
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode == 13) {
+            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show()
+            else
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),13)
+        }
+    }
+
+
 }
