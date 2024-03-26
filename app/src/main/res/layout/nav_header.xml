@@ -5,7 +5,7 @@
     android:padding="16dp"
     android:background="@color/purple_500"
     android:orientation="vertical"
-    android:layout_marginTop="40dp">
+    android:layout_marginTop="55dp">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
         android:text="@string/text_nav"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textColor="@color/white" />
 
 </LinearLayout>

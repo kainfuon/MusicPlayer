@@ -22,7 +22,8 @@
             android:contentDescription="@string/back_btn"
             android:backgroundTint="@android:color/transparent"
             android:tint="@color/white"
-            tools:ignore="UseAppTint" />
+            tools:ignore="UseAppTint"
+            android:padding="5dp"/>
 
         <TextView
             android:layout_width="match_parent"

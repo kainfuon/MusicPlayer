@@ -22,7 +22,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/back_icon"
             android:background="@android:color/transparent"
-            android:contentDescription="@string/back_btn"/>
+            android:contentDescription="@string/back_btn"
+            android:padding="5dp"/>
 
         <TextView
             android:layout_width="0dp"
@@ -31,6 +32,7 @@
             android:textSize="20sp"
             android:gravity="center"
             android:layout_weight="1"
+            android:textColor="@color/black"
             tools:ignore="NestedWeights" />
 
 <!--    favourites button-->

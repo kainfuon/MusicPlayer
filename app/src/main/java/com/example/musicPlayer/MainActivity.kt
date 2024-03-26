@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicPlayer.databinding.ActivityMainBinding
 import kotlin.system.exitProcess
 
@@ -16,17 +17,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var togger: ActionBarDrawerToggle
+    private lateinit var musicAdapter: MusicAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestRuntimePermission()
-        setTheme(R.style.Theme_MusicPlayer)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        togger = ActionBarDrawerToggle(this, binding.root, R.string.open, R.string.close)
-        binding.root.addDrawerListener(togger)
-        togger.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        intializeLayout()
 
         binding.shuffleBtn.setOnClickListener {
             val intent = Intent(this@MainActivity, PlayerActivity::class.java)
@@ -53,7 +47,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     // For requesting permission
-//
+
+//    private fun requestRuntimePermission() {
+//        if (ActivityCompat.checkSelfPermission(
+//                this,
+//                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+//            )
+//            != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+//                13
+//            )
+//        }
+//    }
+
     private fun requestRuntimePermission() :Boolean{
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU){
             if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -94,5 +103,28 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun intializeLayout() {
+        requestRuntimePermission()
+        setTheme(R.style.coolPinkNav)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        togger = ActionBarDrawerToggle(this, binding.root, R.string.open, R.string.close)
+        binding.root.addDrawerListener(togger)
+        togger.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val musicList = ArrayList<String>()
+        musicList.add("1 Song")
+        musicList.add("2 Song")
+        musicList.add("3 Song")
+        musicList.add("4 Song")
+
+        binding.musicRV.setHasFixedSize(true)
+        binding.musicRV.setItemViewCacheSize(13)
+        binding.musicRV.layoutManager = LinearLayoutManager(this@MainActivity)
+        musicAdapter = MusicAdapter(this@MainActivity, musicList)
+        binding.musicRV.adapter = musicAdapter
+    }
 
 }

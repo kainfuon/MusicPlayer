@@ -10,4 +10,10 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <!--Custom colors-->
+    <color name="cool_blue">#0091EA</color>
+    <color name="cool_green">#64DD17</color>
+    <color name="cool_pink">#F50057</color>
+    <color name="yellow">#FFD600</color>
+
 </resources>
