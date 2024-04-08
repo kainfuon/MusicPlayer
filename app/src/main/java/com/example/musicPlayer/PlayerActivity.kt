@@ -29,6 +29,8 @@ class PlayerActivity : AppCompatActivity() {
             if(isPlaying) pauseMusic()
             else playMusic()
         }
+        binding.previousBtnPA.setOnClickListener { prevNextSong(increment = false) }
+        binding.nextBtnPA.setOnClickListener { prevNextSong(increment = true) }
     }
     private fun setLayout(){
         Glide.with(this)
@@ -58,6 +60,13 @@ class PlayerActivity : AppCompatActivity() {
                 setLayout()
                 createMediaPlayer()
             }
+            "MainActivity" ->{
+                musicListPA = ArrayList()
+                musicListPA.addAll(MainActivity.MusicListMA)
+                musicListPA.shuffle()
+                setLayout()
+                createMediaPlayer()
+            }
         }
     }
     private fun playMusic() {
@@ -70,5 +79,30 @@ class PlayerActivity : AppCompatActivity() {
         binding.playPauseBtnPA.setIconResource(R.drawable.play_icon)
         isPlaying = false
         mediaPlayer!!.pause()
+    }
+
+    private fun prevNextSong(increment: Boolean) {
+        if (increment)
+        {
+            setSongPosition(increment = true)
+            setLayout()
+            createMediaPlayer()
+        } else {
+            setSongPosition(increment = false)
+            setLayout()
+            createMediaPlayer()
+        }
+    }
+    private fun setSongPosition(increment: Boolean) {
+        if (increment)
+        {
+            if (musicListPA.size - 1 == songPosition)
+                songPosition = 0
+            else ++songPosition
+        } else {
+            if (0 == songPosition)
+                songPosition = musicListPA.size-1
+            else --songPosition
+        }
     }
 }
