@@ -52,4 +52,6 @@ dependencies {
     //Glide for image loading
     implementation("com.github.bumptech.glide:glide:4.14.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.0")
+    //for Notification
+    implementation("androidx.media:media:1.6.0")
 }
