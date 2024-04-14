@@ -3,6 +3,7 @@ package com.example.musicPlayer
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -11,10 +12,12 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicPlayer.databinding.ActivityMainBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.File
 import kotlin.system.exitProcess
 
@@ -62,7 +65,27 @@ class MainActivity : AppCompatActivity() {
                 R.id.navFeedback -> Toast.makeText(baseContext, "Feedback", Toast.LENGTH_SHORT).show()
                 R.id.navSetting -> Toast.makeText(baseContext, "Setting", Toast.LENGTH_SHORT).show()
                 R.id.navAbout -> Toast.makeText(baseContext, "About", Toast.LENGTH_SHORT).show()
-                R.id.navExit -> exitProcess(1)
+                R.id.navExit -> {
+                    val builder = MaterialAlertDialogBuilder(this)
+                    builder.setTitle("Exit")
+                        .setMessage("Do you want to close app?")
+                        .setPositiveButton("Yes") {_, _ ->
+                            if (PlayerActivity.musicService != null) {
+                                PlayerActivity.musicService!!.stopForeground(true)
+                                PlayerActivity.musicService!!.mediaPlayer!!.release()
+                                PlayerActivity.musicService = null
+                                exitProcess(1)
+                            }
+
+                        }
+                        .setNegativeButton("No") {dialog, _ ->
+                            dialog.dismiss()
+                        }
+                    val customDialog = builder.create()
+                    customDialog.show()
+                    customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED)
+                    customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED)
+                }
             }
             true
         }
@@ -132,23 +155,9 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.R)
     @SuppressLint("SetTextI18n")
     private fun intializeLayout() {
-//        requestRuntimePermission()
-//        setTheme(R.style.coolPinkNav)
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        toggle = ActionBarDrawerToggle(this, binding.root, R.string.open, R.string.close)
-//        binding.root.addDrawerListener(toggle)
-//        toggle.syncState()
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         MusicListMA = getAllAudio()
-
-//        val musicList = ArrayList<String>()
-//        musicList.add("1 Song")
-//        musicList.add("2 Song")
-//        musicList.add("3 Song")
-//        musicList.add("4 Song")
 
         binding.musicRV.setHasFixedSize(true)
         binding.musicRV.setItemViewCacheSize(13)
@@ -209,5 +218,15 @@ class MainActivity : AppCompatActivity() {
             cursor.close()
         }
         return tempList
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (!PlayerActivity.isPlaying && PlayerActivity.musicService != null) {
+            PlayerActivity.musicService!!.stopForeground(true)
+            PlayerActivity.musicService!!.mediaPlayer!!.release()
+            PlayerActivity.musicService = null
+            exitProcess(1)
+        }
     }
 }

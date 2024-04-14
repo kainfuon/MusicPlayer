@@ -13,5 +13,6 @@ class FavouriteActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_favourite)
         binding = ActivityFavouriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.backBtnFA.setOnClickListener { finish() }
     }
 }
