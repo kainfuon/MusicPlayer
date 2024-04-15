@@ -8,6 +8,7 @@ import android.content.ServiceConnection
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.media.audiofx.AudioEffect
+import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
 import android.provider.MediaStore.Audio.Media
@@ -108,7 +109,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
                         min15 = false
                         min30 = false
                         min60 = false
-                        binding.timerBtnPA.setColorFilter(ContextCompat.getColor(this, R.color.purple_500))
+                        binding.timerBtnPA.setColorFilter(ContextCompat.getColor(this, R.color.black))
                     }
                     .setNegativeButton("No") {dialog, _ ->
                         dialog.dismiss()
@@ -117,6 +118,38 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
                 customDialog.show()
                 customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED)
                 customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED)
+            }
+        }
+        binding.shareBtnPA.setOnClickListener {
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.type = "audio/*"
+            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(musicListPA[songPosition].path))
+            startActivity(Intent.createChooser(shareIntent, "Sharing Music File!!"))
+        }
+    }
+
+//    importan function
+    private  fun initializeLayout() {
+        songPosition = intent.getIntExtra("index", 0)
+        when(intent.getStringExtra("class")) {
+            "MusicAdapterSearch" -> {
+                musicListPA = ArrayList()
+                musicListPA.addAll(MainActivity.musicListSearch)
+                setLayout()
+            }
+            "MusicAdapter" ->{
+                musicListPA = ArrayList()
+                musicListPA.addAll(MainActivity.MusicListMA)
+                setLayout()
+
+            }
+            "MainActivity" ->{
+                musicListPA = ArrayList()
+                musicListPA.addAll(MainActivity.MusicListMA)
+                musicListPA.shuffle()
+                setLayout()
+
             }
         }
     }
@@ -147,24 +180,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             musicService!!.mediaPlayer!!.setOnCompletionListener(this)
         } catch (e: Exception) {return}
     }
-    private  fun initializeLayout() {
-        songPosition = intent.getIntExtra("index", 0)
-        when(intent.getStringExtra("class")) {
-            "MusicAdapter" ->{
-                musicListPA = ArrayList()
-                musicListPA.addAll(MainActivity.MusicListMA)
-                setLayout()
 
-            }
-            "MainActivity" ->{
-                musicListPA = ArrayList()
-                musicListPA.addAll(MainActivity.MusicListMA)
-                musicListPA.shuffle()
-                setLayout()
-
-            }
-        }
-    }
     private fun playMusic() {
         binding.playPauseBtnPA.setIconResource(R.drawable.pause_icon)
         musicService!!.showNotification(R.drawable.pause_icon)

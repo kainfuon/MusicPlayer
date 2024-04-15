@@ -8,7 +8,12 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.ContextMenu
+import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -29,6 +34,8 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         lateinit var MusicListMA : ArrayList<Music>
+        lateinit var musicListSearch : ArrayList<Music>
+        var search: Boolean = false
     }
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -150,9 +157,9 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun intializeLayout() {
 
+        search = false
 
         MusicListMA = getAllAudio()
-
         binding.musicRV.setHasFixedSize(true)
         binding.musicRV.setItemViewCacheSize(13)
         binding.musicRV.layoutManager = LinearLayoutManager(this@MainActivity)
@@ -220,4 +227,28 @@ class MainActivity : AppCompatActivity() {
             exitApplication()
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search_view_menu, menu)
+        //for setting gradient
+        //findViewById<LinearLayout>(R.id.linearLayoutNav)?.setBackgroundResource(currentGradient[themeIndex])
+        val searchView = menu?.findItem(R.id.searchView)?.actionView as androidx.appcompat.widget.SearchView
+        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean = true
+            override fun onQueryTextChange(newText: String?): Boolean {
+                musicListSearch = ArrayList()
+                if(newText != null){
+                    val userInput = newText.lowercase()
+                    for (song in MusicListMA)
+                        if(song.title.lowercase().contains(userInput))
+                            musicListSearch.add(song)
+                    search = true
+                    musicAdapter.updateMusicList(searchList = musicListSearch)
+                }
+                return true
+            }
+        })
+        return super.onCreateOptionsMenu(menu)
+    }
+
 }
