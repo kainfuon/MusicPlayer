@@ -8,12 +8,8 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.LinearLayout
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -24,7 +20,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicPlayer.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.File
-import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if (requestRuntimePermission())
-            intializeLayout()
+            initializeLayout()
 
         binding.shuffleBtn.setOnClickListener {
             val intent = Intent(this@MainActivity, PlayerActivity::class.java)
@@ -139,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         if(requestCode == 13) {
             if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show()
-                intializeLayout()
+                initializeLayout()
             }
             else
                 ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),13)
@@ -155,15 +150,13 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.R)
     @SuppressLint("SetTextI18n")
-    private fun intializeLayout() {
+    private fun initializeLayout() {
 
         search = false
-
         MusicListMA = getAllAudio()
         binding.musicRV.setHasFixedSize(true)
         binding.musicRV.setItemViewCacheSize(13)
         binding.musicRV.layoutManager = LinearLayoutManager(this@MainActivity)
-//        musicAdapter = MusicAdapter(this@MainActivity, musicList)
         musicAdapter = MusicAdapter(this@MainActivity, MusicListMA)
         binding.musicRV.adapter = musicAdapter
         binding.totalSongs.text = "Total Songs : "+musicAdapter.itemCount

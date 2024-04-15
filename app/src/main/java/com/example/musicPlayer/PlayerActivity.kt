@@ -46,9 +46,12 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         var min15: Boolean = false
         var min30: Boolean = false
         var min60: Boolean = false
+        var nowPlayingId: String = ""
+        var isFavourite: Boolean = false
+        var fIndex: Int = -1
     }
 
-
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.coolPink)
@@ -121,6 +124,17 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(musicListPA[songPosition].path))
             startActivity(Intent.createChooser(shareIntent, "Sharing Music File!!"))
         }
+        binding.favouriteBtnPA.setOnClickListener {
+            if (isFavourite) {
+                isFavourite = false
+                binding.favouriteBtnPA.setImageResource(R.drawable.favourite_empty_icon)
+                FavouriteActivity.favouriteSongs.removeAt(fIndex)
+            } else {
+                isFavourite = true
+                binding.favouriteBtnPA.setImageResource(R.drawable.favourite_icon)
+                FavouriteActivity.favouriteSongs.add(musicListPA[songPosition])
+            }
+        }
     }
 
 //    importan function
@@ -133,6 +147,8 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
                 binding.tvSeekBarEnd.text = formatDuration(musicService!!.mediaPlayer!!.duration.toLong())
                 binding.seekBarPA.progress = musicService!!.mediaPlayer!!.currentPosition
                 binding.seekBarPA.max = musicService!!.mediaPlayer!!.duration
+                if (isPlaying) binding.playPauseBtnPA.setIconResource(R.drawable.pause_icon)
+                else binding.playPauseBtnPA.setIconResource(R.drawable.play_icon)
             }
             "MusicAdapterSearch" -> {
                 val intent = Intent(this, MusicService::class.java)
@@ -164,6 +180,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         }
     }
     private fun setLayout(){
+        fIndex = favouriteChecker(musicListPA[songPosition].id)
         Glide.with(this)
             .load(musicListPA[songPosition].artUri)
             .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())
@@ -171,6 +188,9 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         binding.songNamePA.text = musicListPA[songPosition].title
         if (repeat) binding.repeatBtnPA.setColorFilter(ContextCompat.getColor(this, R.color.purple_500))
         if(min15 || min30 || min60) binding.timerBtnPA.setColorFilter(ContextCompat.getColor(this, R.color.purple_500))
+        if (isFavourite) binding.favouriteBtnPA.setImageResource(R.drawable.favourite_icon)
+        else binding.favouriteBtnPA.setImageResource(R.drawable.favourite_empty_icon)
+
     }
 
     private fun createMediaPlayer() {
@@ -188,6 +208,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             binding.seekBarPA.progress = 0
             binding.seekBarPA.max = musicService!!.mediaPlayer!!.duration
             musicService!!.mediaPlayer!!.setOnCompletionListener(this)
+            nowPlayingId = musicListPA[songPosition].id
         } catch (e: Exception) {return}
     }
 
@@ -242,9 +263,10 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 13 || resultCode == RESULT_OK)
+        if(requestCode == 13 || resultCode == RESULT_OK)
             return
     }
 
@@ -256,7 +278,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             Toast.makeText(baseContext, "Music will stop after 15 minutes", Toast.LENGTH_SHORT).show()
             binding.timerBtnPA.setColorFilter(ContextCompat.getColor(this, R.color.purple_500))
             min15 = true
-            Thread{Thread.sleep(15 * 60000)
+            Thread{Thread.sleep((15 * 60000).toLong())
             if(min15) exitApplication()}.start()
             dialog.dismiss()
         }
@@ -264,7 +286,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             Toast.makeText(baseContext, "Music will stop after 15 minutes", Toast.LENGTH_SHORT).show()
             binding.timerBtnPA.setColorFilter(ContextCompat.getColor(this, R.color.purple_500))
             min30 = true
-            Thread{Thread.sleep(30 * 60000)
+            Thread{Thread.sleep((30 * 60000).toLong())
                 if(min30) exitApplication()}.start()
             dialog.dismiss()
         }
@@ -272,10 +294,15 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             Toast.makeText(baseContext, "Music will stop after 15 minutes", Toast.LENGTH_SHORT).show()
             binding.timerBtnPA.setColorFilter(ContextCompat.getColor(this, R.color.purple_500))
             min60 = true
-            Thread{Thread.sleep(60 * 60000)
+            Thread{Thread.sleep((60 * 60000).toLong())
                 if(min60) exitApplication()}.start()
             dialog.dismiss()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if(musicListPA[songPosition].id == "Unknown" && !isPlaying) exitApplication()
     }
 
 }
