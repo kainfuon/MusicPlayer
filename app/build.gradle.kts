@@ -50,8 +50,10 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //Glide for image loading
-    implementation("com.github.bumptech.glide:glide:4.14.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.14.0")
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
     //for Notification
-    implementation("androidx.media:media:1.6.0")
+    implementation("androidx.media:media:1.7.0")
+    //for starting object in sharing preference
+    implementation("com.google.code.gson:gson:2.10")
 }

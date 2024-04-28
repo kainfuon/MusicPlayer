@@ -19,6 +19,8 @@ import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicPlayer.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -45,9 +47,19 @@ class MainActivity : AppCompatActivity() {
         binding.root.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        if (requestRuntimePermission())
+        if (requestRuntimePermission()) {
             initializeLayout()
+            // for stating favourite data using share preferences
+            FavouriteActivity.favouriteSongs = ArrayList()
+            val editor = getSharedPreferences("FAVOURITES", MODE_PRIVATE)
+            val jsonString = editor.getString("FavouriteSongs", null)
+            val typeToken = object : TypeToken<ArrayList<Music>>(){}.type
+            if (jsonString != null) {
+                val data: ArrayList<Music> = GsonBuilder().create().fromJson(jsonString, typeToken)
+                FavouriteActivity.favouriteSongs.addAll(data)
+            }
 
+        }
         binding.shuffleBtn.setOnClickListener {
             val intent = Intent(this@MainActivity, PlayerActivity::class.java)
             intent.putExtra("index", 0)
@@ -219,6 +231,16 @@ class MainActivity : AppCompatActivity() {
         if (!PlayerActivity.isPlaying && PlayerActivity.musicService != null) {
             exitApplication()
         }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // for stating favourite data using share preferences
+        val editor = getSharedPreferences("FAVOURITES", MODE_PRIVATE).edit()
+        val jsonString = GsonBuilder().create().toJson(FavouriteActivity.favouriteSongs)
+        editor.putString("FavouriteSongs", jsonString)
+        editor.apply()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

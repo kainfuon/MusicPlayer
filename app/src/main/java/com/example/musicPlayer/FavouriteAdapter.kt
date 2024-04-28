@@ -28,6 +28,13 @@ class FavouriteAdapter(private val context: Context, private var musicList: Arra
             .load(musicList[position].artUri)
             .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())
             .into(holder.image)
+        holder.root.setOnClickListener {
+            val intent = Intent(context, PlayerActivity::class.java)
+            intent.putExtra("index", position)
+            intent.putExtra("class", "FavouriteAdapter")
+            ContextCompat.startActivity(context, intent, null)
+
+        }
     }
 
     override fun getItemCount(): Int {
@@ -35,11 +42,5 @@ class FavouriteAdapter(private val context: Context, private var musicList: Arra
     }
 
 
-    private fun sendIntent(ref: String, pos: Int) {
-        val intent = Intent(context, PlayerActivity::class.java)
-        intent.putExtra("index", pos)
-        intent.putExtra("class", ref)
-        ContextCompat.startActivity(context, intent, null)
 
-    }
 }
