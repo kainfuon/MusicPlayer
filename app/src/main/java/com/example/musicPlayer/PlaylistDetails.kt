@@ -2,9 +2,11 @@ package com.example.musicPlayer
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.musicPlayer.databinding.ActivityPlaylistDetailsBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.GsonBuilder
 
 class PlaylistDetails : AppCompatActivity() {
 
@@ -30,7 +34,8 @@ class PlaylistDetails : AppCompatActivity() {
         binding.playlistDetailsRV.setItemViewCacheSize(10)
         binding.playlistDetailsRV.setHasFixedSize(true)
         binding.playlistDetailsRV.layoutManager = LinearLayoutManager(this)
-        PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.addAll(MainActivity.MusicListMA)
+     //   PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.addAll(MainActivity.MusicListMA)
+     //   PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.shuffle()
         adapter = MusicAdapter(this, PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist, playlistDetails = true)
         binding.playlistDetailsRV.adapter = adapter
         binding.backBtnPD.setOnClickListener{finish()}
@@ -42,6 +47,23 @@ class PlaylistDetails : AppCompatActivity() {
         }
         binding.addBtnPD.setOnClickListener{
             startActivity(Intent(this, SelectionActivity::class.java))
+        }
+        binding.removeAllPD.setOnClickListener {
+            val builder = MaterialAlertDialogBuilder(this)
+            builder.setTitle("Remove")
+                .setMessage("Do you want to remove all songs from playlist?")
+                .setPositiveButton("Yes") {dialog, _ ->
+                    PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.clear()
+                    adapter.refeshPlaylist()
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No") {dialog, _ ->
+                    dialog.dismiss()
+                }
+            val customDialog = builder.create()
+            customDialog.show()
+            customDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED)
+            customDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED)
         }
         /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -64,5 +86,11 @@ class PlaylistDetails : AppCompatActivity() {
                                 .into(binding.playlistImgPD)
                             binding.shuffleBtnPD.visibility = View.VISIBLE
                         }
+        adapter.notifyDataSetChanged()
+        // for stating favourite data using share preferences
+        val editor = getSharedPreferences("FAVOURITES", MODE_PRIVATE).edit()
+        val jsonStringPlaylist = GsonBuilder().create().toJson(PlaylistActivity.musicPlaylist)
+        editor.putString("MusicPlaylist", jsonStringPlaylist)
+        editor.apply()
     }
 }
