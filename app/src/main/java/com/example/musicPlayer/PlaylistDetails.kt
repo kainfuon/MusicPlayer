@@ -1,6 +1,7 @@
 package com.example.musicPlayer
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -32,7 +33,16 @@ class PlaylistDetails : AppCompatActivity() {
         PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist.addAll(MainActivity.MusicListMA)
         adapter = MusicAdapter(this, PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist, playlistDetails = true)
         binding.playlistDetailsRV.adapter = adapter
-
+        binding.backBtnPD.setOnClickListener{finish()}
+        binding.shuffleBtnPD.setOnClickListener {
+            val intent = Intent(this, PlayerActivity::class.java)
+            intent.putExtra("index", 0)
+            intent.putExtra("class", "playlistDetailsShuffle")
+            startActivity(intent)
+        }
+        binding.addBtnPD.setOnClickListener{
+            startActivity(Intent(this, SelectionActivity::class.java))
+        }
         /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

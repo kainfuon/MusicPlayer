@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/purple_500">
+        android:background="@color/purple_500"
+        android:layout_marginTop="2dp">
 
         <ImageButton
             android:id="@+id/backBtnPD"
@@ -48,7 +49,8 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        android:background="@color/purple_500"
         android:layout_marginTop="10dp">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -99,12 +101,12 @@
         tools:ignore="MissingConstraints"
         android:visibility="invisible"/>
 
-        <!--        for button-->
+        <!--for button-->
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -116,7 +118,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/add_song"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:drawableLeft="@drawable/add_icon"
+                android:drawableTop="@drawable/add_icon"
                 android:text="@string/add_song"
                 android:textColor="@color/purple_500"
                 android:textAllCaps="false"
@@ -130,7 +132,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/remove_all"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:drawableLeft="@drawable/remove_icon"
+                android:drawableTop="@drawable/remove_icon"
                 android:text="@string/remove_all"
                 android:textColor="@color/purple_500"
                 android:textAllCaps="false"

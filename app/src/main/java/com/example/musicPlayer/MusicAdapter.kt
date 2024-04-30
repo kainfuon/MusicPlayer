@@ -33,13 +33,21 @@ class MusicAdapter(private val context: Context, private var musicList: ArrayLis
             .load(musicList[position].artUri)
             .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())
             .into(holder.image)
-        holder.root.setOnClickListener {
-            when {
-                MainActivity.search -> sendIntent(ref = "MusicAdapterSearch", pos = position)
-                musicList[position].id == PlayerActivity.nowPlayingId ->
-                    sendIntent(ref = "NowPlaying", pos = PlayerActivity.songPosition)
-                else -> sendIntent(ref = "MusicAdapter", pos = position)
+        when{
+            playlistDetails ->{
+                holder.root.setOnClickListener {
+                    sendIntent(ref = "PlaylistDetailsAdapter", pos = position)
+                }
             }
+            else -> {
+                holder.root.setOnClickListener {
+                when {
+                    MainActivity.search -> sendIntent(ref = "MusicAdapterSearch", pos = position)
+                    musicList[position].id == PlayerActivity.nowPlayingId ->
+                        sendIntent(ref = "NowPlaying", pos = PlayerActivity.songPosition)
+                    else -> sendIntent(ref = "MusicAdapter", pos = position) }}
+        }
+
         }
     }
 
