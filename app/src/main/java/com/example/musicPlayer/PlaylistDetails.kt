@@ -31,6 +31,8 @@ class PlaylistDetails : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         currentPlaylistPos = intent.extras?.get("index") as Int
+        PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist =
+            checkPlaylist(playlist = PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist)
         binding.playlistDetailsRV.setItemViewCacheSize(10)
         binding.playlistDetailsRV.setHasFixedSize(true)
         binding.playlistDetailsRV.layoutManager = LinearLayoutManager(this)
@@ -79,7 +81,8 @@ class PlaylistDetails : AppCompatActivity() {
         binding.moreInfoPD.text = "Total ${adapter.itemCount} Songs.\n\n" +
                 "Created On:\n${PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].createdOn}\n\n" +
                 "  -- ${PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].createdBy}"
-                        if(adapter.itemCount > 0) {
+                        if(adapter.itemCount > 0)
+                        {
                             Glide.with(this)
                                 .load(PlaylistActivity.musicPlaylist.ref[currentPlaylistPos].playlist[0].artUri)
                                 .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())

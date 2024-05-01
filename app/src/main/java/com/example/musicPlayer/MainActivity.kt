@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if (requestRuntimePermission()) {
             initializeLayout()
-            // for stating favourite data using share preferences
+            // for retrieving favourite data using share preferences
             FavouriteActivity.favouriteSongs = ArrayList()
             val editor = getSharedPreferences("FAVOURITES", MODE_PRIVATE)
             val jsonString = editor.getString("FavouriteSongs", null)
@@ -236,7 +236,6 @@ class MainActivity : AppCompatActivity() {
         if (!PlayerActivity.isPlaying && PlayerActivity.musicService != null) {
             exitApplication()
         }
-
     }
 
     override fun onResume() {

@@ -57,4 +57,6 @@ dependencies {
     implementation("androidx.media:media:1.7.0")
     //for starting object in sharing preference
     implementation("com.google.code.gson:gson:2.10")
+    //for storing objects in shared preferences
+    implementation("com.google.code.gson:gson:2.8.6")
 }
