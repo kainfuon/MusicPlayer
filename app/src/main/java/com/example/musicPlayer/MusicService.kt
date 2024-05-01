@@ -29,6 +29,8 @@ class MusicService: Service() {
     }
     @SuppressLint("ForegroundServiceType")
     fun showNotification(playPauseBtn: Int){
+        val intent = Intent(baseContext, MainActivity::class.java)
+        val contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val prevIntent = Intent(baseContext, NotificationReceiver::class.java).setAction(ApplicationClass.PREVIOUS)
         val prevPendingIntent = PendingIntent.getBroadcast(baseContext,0, prevIntent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -50,6 +52,7 @@ class MusicService: Service() {
         }
 
         val notification = NotificationCompat.Builder(baseContext, ApplicationClass.CHANNEL_ID)
+            .setContentIntent(contentIntent)
             .setContentTitle(PlayerActivity.musicListPA[PlayerActivity.songPosition].title)
             .setContentText(PlayerActivity.musicListPA[PlayerActivity.songPosition].artist)
             .setSmallIcon(R.drawable.music_icon)
