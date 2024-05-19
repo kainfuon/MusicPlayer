@@ -16,7 +16,8 @@ class SelectionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySelectionBinding.inflate(layoutInflater)
-        setTheme(R.style.coolPink)
+
+        setTheme(MainActivity.currentTheme[MainActivity.themeIndex])
         enableEdgeToEdge()
         setContentView(binding.root)
 

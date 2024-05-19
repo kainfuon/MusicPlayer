@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/purple_500">
+        android:background="?attr/themeColor">
 
         <ImageButton
             android:id="@+id/backBtnPLA"
@@ -56,7 +56,7 @@
         android:backgroundTint="@color/white"
         app:icon="@drawable/add_icon"
         app:iconSize="35dp"
-        app:iconTint="@color/purple_500"
+        app:iconTint="?attr/themeColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9"
         app:strokeWidth="2dp"
-        app:strokeColor="@color/purple_500"
+        app:strokeColor="?attr/themeColor"
         tools:ignore="MissingConstraints" />
 
 

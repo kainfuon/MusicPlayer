@@ -37,6 +37,8 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+
 }
 
 dependencies {
@@ -59,4 +61,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10")
     //for storing objects in shared preferences
     implementation("com.google.code.gson:gson:2.8.6")
+
+    implementation("com.sun.mail:android-mail:1.6.2")
+    implementation("com.sun.mail:android-activation:1.6.2")
+
 }
