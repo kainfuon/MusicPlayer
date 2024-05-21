@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/previous_icon"
-            android:backgroundTint="@color/purple_200"
+            android:backgroundTint="@color/pink"
             app:iconTint="@color/white"
             app:iconSize="40dp"/>
 
@@ -104,7 +104,7 @@
             app:iconSize="50dp"
             android:layout_marginHorizontal="25dp"
             app:shapeAppearanceOverlay="@style/curved"
-            android:backgroundTint="@color/purple_200"
+            android:backgroundTint="@color/pink"
             app:iconTint="@color/white"/>
 
 <!--        Next Button-->
@@ -113,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/next_icon"
-            android:backgroundTint="@color/purple_200"
+            android:backgroundTint="@color/pink"
             app:iconTint="@color/white"
             app:iconSize="40dp"/>
 

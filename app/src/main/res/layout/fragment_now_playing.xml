@@ -16,6 +16,8 @@
         app:shapeAppearanceOverlay="@style/curved"
         android:src="@drawable/music_player_icon_slash_screen"/>
 
+
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/nextBtnNP"
         android:layout_width="wrap_content"
