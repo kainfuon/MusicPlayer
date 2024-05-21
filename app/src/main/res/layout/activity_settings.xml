@@ -82,7 +82,7 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:src="@drawable/sort_icon"
-            android:tint="@color/cool_pink"
+            android:tint="@color/black"
             android:padding="5dp"/>
     </LinearLayout>
 
