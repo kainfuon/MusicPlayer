@@ -17,17 +17,17 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.title = "Settings"
         when(MainActivity.themeIndex){
-            0 -> binding.coolPinkTheme.setBackgroundColor(Color.YELLOW)
-            1 -> binding.coolBlueTheme.setBackgroundColor(Color.YELLOW)
-            2 -> binding.coolPurpleTheme.setBackgroundColor(Color.YELLOW)
-            3 -> binding.coolGreenTheme.setBackgroundColor(Color.YELLOW)
-            4 -> binding.coolBlackTheme.setBackgroundColor(Color.YELLOW)
+            0 -> binding.coolPinkTheme.setBackgroundColor(Color.GRAY)
+//            1 -> binding.coolBlueTheme.setBackgroundColor(Color.YELLOW)
+//            2 -> binding.coolPurpleTheme.setBackgroundColor(Color.YELLOW)
+//            3 -> binding.coolGreenTheme.setBackgroundColor(Color.YELLOW)
+            1 -> binding.coolBlackTheme.setBackgroundColor(Color.GRAY)
         }
         binding.coolPinkTheme.setOnClickListener { saveTheme(0) }
-        binding.coolBlueTheme.setOnClickListener { saveTheme(1) }
-        binding.coolPurpleTheme.setOnClickListener { saveTheme(2) }
-        binding.coolGreenTheme.setOnClickListener { saveTheme(3) }
-        binding.coolBlackTheme.setOnClickListener { saveTheme(4) }
+//        binding.coolBlueTheme.setOnClickListener { saveTheme(1) }
+//        binding.coolPurpleTheme.setOnClickListener { saveTheme(2) }
+//        binding.coolGreenTheme.setOnClickListener { saveTheme(3) }
+        binding.coolBlackTheme.setOnClickListener { saveTheme(1) }
         binding.versionName.text = setVersionDetails()
         binding.sortBtn.setOnClickListener {
             val menuList = arrayOf("Recently Added", "Song Title", "File Size")

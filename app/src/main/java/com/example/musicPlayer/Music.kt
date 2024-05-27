@@ -95,6 +95,7 @@ fun checkPlaylist(playlist: ArrayList<Music>): ArrayList<Music>{
      )
  }
 
+ // ham lay color anh set background
  fun getMainColor(img: Bitmap): Int {
      val newImg = Bitmap.createScaledBitmap(img, 1,1 , true)
      val color = newImg.getPixel(0, 0)

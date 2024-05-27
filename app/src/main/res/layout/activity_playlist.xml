@@ -79,7 +79,7 @@
         android:textSize="20sp"
         android:padding="16dp"
         android:gravity="center"
-        android:textColor="?attr/dialogBtnBackground"
+        android:textColor="?attr/themeColor"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

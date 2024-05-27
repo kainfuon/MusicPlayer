@@ -221,6 +221,8 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
                 R.drawable.music_player_icon_slash_screen
             )
         }
+
+        // set mau background khi play music
         val bgColor = getMainColor(image)
         val gradient = GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, intArrayOf(0xFFFFFF, bgColor))
         binding.root.background = gradient
