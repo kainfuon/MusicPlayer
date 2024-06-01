@@ -223,10 +223,10 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         }
 
         // set mau background khi play music
-        val bgColor = getMainColor(image)
-        val gradient = GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, intArrayOf(0xFFFFFF, bgColor))
-        binding.root.background = gradient
-        window?.statusBarColor = bgColor
+//        val bgColor = getMainColor(image)
+//        val gradient = GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, intArrayOf(0xFFFFFF, bgColor))
+//        binding.root.background = gradient
+//        window?.statusBarColor = bgColor
     }
 
     private fun createMediaPlayer(){
