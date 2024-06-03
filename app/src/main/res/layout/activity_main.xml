@@ -41,7 +41,8 @@
                         android:drawableTop="@drawable/shuffle_icon"
                         android:text="@string/shuffle_btn"
                         android:textAllCaps="false"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        />
                     <!--Favourites Button-->
                     <Button
                         android:id="@+id/favouriteBtn"
@@ -65,7 +66,8 @@
                         android:drawableTop="@drawable/playlist_icon"
                         android:text="@string/playlist_btn"
                         android:textAllCaps="false"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        />
 
 
 
@@ -86,21 +88,21 @@
                 </LinearLayout>
 
                 <!-- Today Songs-->
-                <TextView
-                    android:id="@+id/todaySong"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:textSize="18sp"
-                    android:text="@string/total_songs"
-                    android:textColor="@color/black" />
+<!--                <TextView-->
+<!--                    android:id="@+id/todaySong"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="20dp"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:text="@string/total_songs"-->
+<!--                    android:textColor="@color/black" />-->
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/todayRV"
-                    android:layout_width="match_parent"
-                    android:layout_height="160dp"
-                    android:scrollbarThumbVertical="@drawable/scroll_bar_icon"
-                    android:scrollbars="vertical" />
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/todayRV"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="140dp"-->
+<!--                    android:scrollbarThumbVertical="@drawable/scroll_bar_icon"-->
+<!--                    android:scrollbars="vertical" />-->
 
                 <!--Total Songs Button-->
                 <TextView

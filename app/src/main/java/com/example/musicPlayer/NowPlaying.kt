@@ -19,6 +19,7 @@ class NowPlaying : Fragment() {
         lateinit var binding: FragmentNowPlayingBinding
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         requireContext().theme.applyStyle(MainActivity.currentTheme[MainActivity.themeIndex], true)
         val view = inflater.inflate(R.layout.fragment_now_playing, container, false)
@@ -35,6 +36,8 @@ class NowPlaying : Fragment() {
                 .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())
                 .into(binding.songImgNP)
             binding.songNameNP.text = PlayerActivity.musicListPA[PlayerActivity.songPosition].title
+            binding.songAlbumNP.text = PlayerActivity.musicListPA[PlayerActivity.songPosition].album + " • " + PlayerActivity.musicListPA[PlayerActivity.songPosition].artist
+
             PlayerActivity.musicService!!.showNotification(R.drawable.pause_icon)
             playMusic()
         }
@@ -47,16 +50,19 @@ class NowPlaying : Fragment() {
         return view
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onResume() {
         super.onResume()
         if(PlayerActivity.musicService != null){
             binding.root.visibility = View.VISIBLE
             binding.songNameNP.isSelected = true
+            binding.songAlbumNP.isSelected = true
             Glide.with(requireContext())
                 .load(PlayerActivity.musicListPA[PlayerActivity.songPosition].artUri)
                 .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())
                 .into(binding.songImgNP)
             binding.songNameNP.text = PlayerActivity.musicListPA[PlayerActivity.songPosition].title
+            binding.songAlbumNP.text = PlayerActivity.musicListPA[PlayerActivity.songPosition].album + " • " + PlayerActivity.musicListPA[PlayerActivity.songPosition].artist
             if(PlayerActivity.isPlaying) binding.playPauseBtnNP.setIconResource(R.drawable.pause_icon)
             else binding.playPauseBtnNP.setIconResource(R.drawable.play_icon)
         }

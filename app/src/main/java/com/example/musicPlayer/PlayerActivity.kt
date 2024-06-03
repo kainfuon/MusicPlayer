@@ -295,6 +295,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         musicService = null
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCompletion(mp: MediaPlayer?) {
         setSongPosition(increment = true)
         createMediaPlayer()
@@ -302,11 +303,13 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
 
         //for refreshing now playing image & text on song completion
         NowPlaying.binding.songNameNP.isSelected = true
+        NowPlaying.binding.songAlbumNP.isSelected = true
         Glide.with(applicationContext)
             .load(musicListPA[songPosition].artUri)
             .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())
             .into(NowPlaying.binding.songImgNP)
         NowPlaying.binding.songNameNP.text = musicListPA[songPosition].title
+        NowPlaying.binding.songAlbumNP.text = musicListPA[songPosition].album + " • " + musicListPA[songPosition].artist
     }
 
     @Deprecated("Deprecated in Java")
