@@ -31,9 +31,9 @@
         <TextView
             android:id="@+id/playlistNamePD"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:contentDescription="@string/playlist_btn"
-            android:gravity="center"
+            android:gravity="center|top"
             android:text="@string/playlist_btn"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -44,26 +44,37 @@
     <LinearLayout
         android:id="@+id/linearLayoutDetails"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:orientation="horizontal"
+        android:layout_height="280dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
-        android:background="?attr/themeColor"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="0dp">
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/playlistImgPD"
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:src="@drawable/music_player_icon_slash_screen"/>
+
+        <TextView
+            android:id="@+id/createInfoPD"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/playlist_name"
+            android:gravity="center"
+            android:layout_marginHorizontal="5dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/moreInfoPD"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/playlist_name"
-            android:gravity="center|start"
+            android:gravity="center"
             android:layout_marginHorizontal="5dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -76,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayoutDetails"
         android:scrollbarThumbVertical="@drawable/scroll_bar_icon"
         android:scrollbars="vertical"
-        android:paddingBottom="280dp"
+        android:paddingBottom="170dp"
         android:layout_marginTop="10dp"/>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -107,6 +118,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
         <!--Add Button-->
+
         <Button
             android:id="@+id/addBtnPD"
             style="@style/Widget.AppCompat.Button.Borderless"
