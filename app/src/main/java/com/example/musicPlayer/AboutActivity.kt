@@ -14,8 +14,20 @@ class AboutActivity : AppCompatActivity() {
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.title = "About"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.aboutText.text = aboutText()
+        binding.aboutImage.setImageResource(R.drawable.music_icon)
+
+
+        // Thêm xử lý sự kiện nút back
+
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     private fun aboutText(): String{
         return "Hello World" +
                 "\n\nIf you want to provide feedback, I will love to hear that."

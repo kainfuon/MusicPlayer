@@ -16,6 +16,7 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.title = "Settings"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         when(MainActivity.themeIndex){
             0 -> binding.coolPinkTheme.setBackgroundColor(Color.GRAY)
 //            1 -> binding.coolBlueTheme.setBackgroundColor(Color.YELLOW)
@@ -71,5 +72,10 @@ class SettingsActivity : AppCompatActivity() {
     }
     private fun setVersionDetails():String{
         return "Version Name: ${BuildConfig.VERSION_NAME}"
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

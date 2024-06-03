@@ -100,9 +100,9 @@ class MainActivity : AppCompatActivity() {
         binding.playlistBtn.setOnClickListener {
             startActivity(Intent(this@MainActivity, PlaylistActivity::class.java))
         }
-        binding.playNextBtn.setOnClickListener {
-            startActivity(Intent(this@MainActivity, PlayNext::class.java))
-        }
+//        binding.playNextBtn.setOnClickListener {
+//            startActivity(Intent(this@MainActivity, PlayNext::class.java))
+//        }
         binding.navView.setNavigationItemSelectedListener{
             when(it.itemId)
             {

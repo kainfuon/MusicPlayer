@@ -41,7 +41,7 @@
                         android:drawableTop="@drawable/shuffle_icon"
                         android:text="@string/shuffle_btn"
                         android:textAllCaps="false"
-                        android:textColor="?colorOnPrimary" />
+                        android:textColor="@color/black" />
                     <!--Favourites Button-->
                     <Button
                         android:id="@+id/favouriteBtn"
@@ -53,7 +53,7 @@
                         android:drawableTop="@drawable/favourite_icon"
                         android:text="@string/favourites_btn"
                         android:textAllCaps="false"
-                        android:textColor="?colorOnPrimary" />
+                        android:textColor="@color/black" />
                     <!--Playlists Button-->
                     <Button
                         android:id="@+id/playlistBtn"
@@ -65,29 +65,50 @@
                         android:drawableTop="@drawable/playlist_icon"
                         android:text="@string/playlist_btn"
                         android:textAllCaps="false"
-                        android:textColor="?colorOnPrimary" />
+                        android:textColor="@color/black" />
+
+
 
                     <!--Play Next Button-->
-                    <Button
-                        android:id="@+id/playNextBtn"
-                        style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/playlist_btn"
-                        android:drawableTop="@drawable/play_next_icon"
-                        android:text="@string/play_next"
-                        android:textAllCaps="false"
-                        android:textColor="?colorOnPrimary" />
+
+<!--                                        <Button-->
+<!--                        android:id="@+id/playNextBtn"-->
+<!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:contentDescription="@string/playlist_btn"-->
+<!--                        android:drawableTop="@drawable/play_next_icon"-->
+<!--                        android:text="@string/play_next"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="?colorOnPrimary" />-->
 
                 </LinearLayout>
+
+                <!-- Today Songs-->
+                <TextView
+                    android:id="@+id/todaySong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:textSize="18sp"
+                    android:text="@string/total_songs"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/todayRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:scrollbarThumbVertical="@drawable/scroll_bar_icon"
+                    android:scrollbars="vertical" />
 
                 <!--Total Songs Button-->
                 <TextView
                     android:id="@+id/totalSongs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="20dp"
+                    android:textSize="18sp"
                     android:text="@string/total_songs"
                     android:textColor="@color/black" />
 

@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.musicPlayer.databinding.ActivityFavouriteBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class FavouriteActivity : AppCompatActivity() {
 
@@ -27,7 +29,7 @@ class FavouriteActivity : AppCompatActivity() {
         binding.backBtnFA.setOnClickListener { finish() }
         binding.favouriteRV.setHasFixedSize(true)
         binding.favouriteRV.setItemViewCacheSize(13)
-        binding.favouriteRV.layoutManager = GridLayoutManager(this, 4)
+        binding.favouriteRV.layoutManager = LinearLayoutManager(this)
         adapter = FavouriteAdapter(this, favouriteSongs)
         binding.favouriteRV.adapter = adapter
 
@@ -43,6 +45,8 @@ class FavouriteActivity : AppCompatActivity() {
             intent.putExtra("class", "FavouriteShuffle")
             startActivity(intent)
         }
+
+
     }
 
     @SuppressLint("NotifyDataSetChanged")

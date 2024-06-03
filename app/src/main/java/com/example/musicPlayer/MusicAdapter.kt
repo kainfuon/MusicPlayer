@@ -1,5 +1,6 @@
 package com.example.musicPlayer
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -155,4 +156,6 @@ private val selectionActivity: Boolean = false)
         musicList = PlaylistActivity.musicPlaylist.ref[PlaylistDetails.currentPlaylistPos].playlist
         notifyDataSetChanged()
     }
+
+
 }

@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="orange">#FF987D</color>
+    <color name="orange_10">#FFE4DD</color>
     <color name="lavender">#8692f7</color>
     <color name="purple_10">#F4E3F8</color>
     <color name="purple_50">#E0CAFA</color>
@@ -12,6 +14,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="pink">#EDFA3A7E</color>
+    <color name="pink_100">#EDFA70A1</color>
 <!--    custom colors-->
     <color name="cool_blue">#0091EA</color>
     <color name="cool_green">#64DD17</color>

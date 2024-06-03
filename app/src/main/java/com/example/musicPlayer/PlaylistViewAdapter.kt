@@ -25,7 +25,7 @@ class PlaylistViewAdapter(private val context: Context, private var playlistList
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        if(MainActivity.themeIndex == 4){
+        if(MainActivity.themeIndex == 1){
             holder.root.strokeColor = ContextCompat.getColor(context, R.color.white)
         }
         holder.name.text = playlistList[position].name

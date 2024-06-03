@@ -16,11 +16,14 @@ import com.google.android.material.snackbar.Snackbar
 import com.example.musicPlayer.databinding.FavouriteViewBinding
 import com.example.musicPlayer.databinding.MoreFeaturesBinding
 
-class FavouriteAdapter(private val context: Context, private var musicList: ArrayList<Music>,val playNext: Boolean = false) : RecyclerView.Adapter<FavouriteAdapter.MyHolder>() {
+class FavouriteAdapter(private val context: Context, private var musicList: ArrayList<Music>,val playNext: Boolean = false)
+    : RecyclerView.Adapter<FavouriteAdapter.MyHolder>() {
 
     class MyHolder(binding: FavouriteViewBinding) : RecyclerView.ViewHolder(binding.root) {
         val image = binding.songImgFV
         val name = binding.songNameFV
+        val album = binding.songAlbumFV
+        val duration = binding.songDurationFV
         val root = binding.root
     }
 
@@ -31,6 +34,8 @@ class FavouriteAdapter(private val context: Context, private var musicList: Arra
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         holder.name.text = musicList[position].title
+        holder.album.text = musicList[position].album
+        holder.duration.text = formatDuration(musicList[position].duration)
         Glide.with(context)
             .load(musicList[position].artUri)
             .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())

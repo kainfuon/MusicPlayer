@@ -3,4 +3,7 @@
     <style name="curved">
         <item name="cornerSize">15%</item>
     </style>
+    <style name="big_curved">
+        <item name="cornerSize">9%</item>
+    </style>
 </resources>
