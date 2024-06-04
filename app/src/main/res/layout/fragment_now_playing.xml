@@ -20,8 +20,6 @@
         app:strokeWidth="1dp"/>
 
 
-
-
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/nextBtnNP"
         android:layout_width="wrap_content"
@@ -29,11 +27,11 @@
         android:layout_alignParentEnd="true"
         app:icon="@drawable/next_icon"
         app:iconTint="@color/white"
-        android:backgroundTint="?attr/colorSecondary"
+        android:backgroundTint="@android:color/transparent"
         android:layout_centerVertical="true"
-        app:iconSize="40dp"
+        app:iconSize="35dp"
         android:outlineProvider="none"
-        android:layout_marginEnd="10dp"/>
+        android:layout_marginEnd="10dp" />
 
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -42,9 +40,10 @@
         android:layout_height="wrap_content"
         app:icon="@drawable/play_icon"
         app:iconTint="@color/white"
+        app:shapeAppearanceOverlay="@style/curved"
         android:backgroundTint="?attr/colorSecondary"
         android:layout_centerVertical="true"
-        app:iconSize="40dp"
+        app:iconSize="35dp"
         android:outlineProvider="none"
         android:layout_toStartOf="@id/nextBtnNP"
         android:layout_marginHorizontal="5dp"/>
@@ -68,8 +67,6 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:gravity="start"
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"/>
 
         <TextView

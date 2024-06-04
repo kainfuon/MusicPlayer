@@ -11,11 +11,11 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="2dp">
+        android:layout_marginTop="0dp">
 
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
@@ -47,9 +47,11 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/favourites_btn"
-            android:gravity="center|top"
+            android:gravity="center"
             android:text="@string/favourites_btn"
             android:textColor="@color/black"
             android:textSize="22sp"

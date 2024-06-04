@@ -130,6 +130,7 @@ private val selectionActivity: Boolean = false)
         return musicList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateMusicList(searchList : ArrayList<Music>){
         musicList = ArrayList()
         musicList.addAll(searchList)

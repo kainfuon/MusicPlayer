@@ -103,6 +103,27 @@ class MainActivity : AppCompatActivity() {
 //        binding.playNextBtn.setOnClickListener {
 //            startActivity(Intent(this@MainActivity, PlayNext::class.java))
 //        }
+
+        binding.sortBtnRV.setOnClickListener {
+            val menuList = arrayOf("Recently Added", "Song Title", "File Size")
+            var currentSort = MainActivity.sortOrder
+            val builder = MaterialAlertDialogBuilder(this)
+            builder.setTitle("Sorting")
+                .setPositiveButton("OK"){ _, _ ->
+                    val editor = getSharedPreferences("SORTING", MODE_PRIVATE).edit()
+                    editor.putInt("sortOrder", currentSort)
+                    editor.apply()
+                    recreate()
+                }
+                .setSingleChoiceItems(menuList, currentSort){ _,which->
+                    currentSort = which
+                }
+            val customDialog = builder.create()
+            customDialog.show()
+
+            setDialogBtnBackground(this, customDialog)
+        }
+
         binding.navView.setNavigationItemSelectedListener{
             when(it.itemId)
             {
@@ -249,6 +270,7 @@ class MainActivity : AppCompatActivity() {
             sortOrder = sortValue
             MusicListMA = getAllAudio()
             musicAdapter.updateMusicList(MusicListMA)
+
         }
         if(PlayerActivity.musicService != null) binding.nowPlaying.visibility = View.VISIBLE
     }

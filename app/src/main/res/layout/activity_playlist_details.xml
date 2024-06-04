@@ -11,11 +11,10 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="2dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/backBtnPD"
@@ -31,14 +30,16 @@
         <TextView
             android:id="@+id/playlistNamePD"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/playlist_btn"
-            android:gravity="center|top"
+            android:gravity="center"
+            android:singleLine="true"
             android:text="@string/playlist_btn"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:singleLine="true"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -46,15 +47,18 @@
         android:layout_width="match_parent"
         android:layout_height="280dp"
         android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
         android:layout_marginTop="0dp">
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/playlistImgPD"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/music_player_icon_slash_screen"/>
+            android:src="@drawable/music_player_icon_slash_screen"
+            app:shapeAppearanceOverlay="@style/curved" />
 
         <TextView
             android:id="@+id/createInfoPD"
@@ -87,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayoutDetails"
         android:scrollbarThumbVertical="@drawable/scroll_bar_icon"
         android:scrollbars="vertical"
-        android:paddingBottom="170dp"
+        android:paddingBottom="300dp"
         android:layout_marginTop="10dp"/>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -112,7 +116,7 @@
         <!--for buttons-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

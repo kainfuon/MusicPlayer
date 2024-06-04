@@ -29,6 +29,7 @@ class SettingsActivity : AppCompatActivity() {
 //        binding.coolPurpleTheme.setOnClickListener { saveTheme(2) }
 //        binding.coolGreenTheme.setOnClickListener { saveTheme(3) }
         binding.coolBlackTheme.setOnClickListener { saveTheme(1) }
+        binding.settingImage.setImageResource(R.drawable.settings_icon)
         binding.versionName.text = setVersionDetails()
         binding.sortBtn.setOnClickListener {
             val menuList = arrayOf("Recently Added", "Song Title", "File Size")
