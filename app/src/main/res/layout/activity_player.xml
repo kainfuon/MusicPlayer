@@ -75,7 +75,7 @@
         android:textSize="25sp"
         android:textColor="?colorOnPrimary"
         android:gravity="center"
-        android:layout_weight="0.5"
+        android:layout_weight="0.3"
         android:textIsSelectable="true" />
 
     <LinearLayout
@@ -148,7 +148,18 @@
         android:orientation="horizontal"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:layout_weight="0">
+        android:layout_weight="0.5">
+
+        <ImageButton
+            android:id="@+id/shuffleBtnPA"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shuffle_icon"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/repeat_btn"
+            android:layout_marginHorizontal="20dp"
+            tools:ignore="NestedWeights"
+            app:tint="@color/cool_pink" />
 
 <!--        Previous Button-->
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -156,8 +167,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/previous_icon"
-            android:backgroundTint="@color/pink"
-            app:iconTint="@color/white"
+            android:backgroundTint="?attr/colorPrimary"
+            app:iconTint="@color/pink"
             android:outlineProvider="none"
             app:iconSize="40dp"/>
 
@@ -168,8 +179,8 @@
             android:layout_height="wrap_content"
             app:icon="@drawable/pause_icon"
             app:iconSize="40dp"
-            android:layout_marginHorizontal="25dp"
-            app:shapeAppearanceOverlay="@style/curved"
+            android:layout_marginHorizontal="30dp"
+
             android:outlineProvider="none"
             android:backgroundTint="@color/pink"
             app:iconTint="@color/white"/>
@@ -181,10 +192,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/next_icon"
-            android:backgroundTint="@color/pink"
-            app:iconTint="@color/white"
+            android:backgroundTint="?attr/colorPrimary"
+            app:iconTint="@color/pink"
             android:outlineProvider="none"
             app:iconSize="40dp"/>
+
+
+        <!--        Repeat Button-->
+        <ImageButton
+            android:id="@+id/repeatBtnPA"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/repeat_icon"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/repeat_btn"
+            android:layout_marginHorizontal="20dp"
+            app:tint="@color/cool_pink" />
 
 
 
@@ -195,22 +218,13 @@
 
 <!--    Last Row for Various Player Options-->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_weight="0.2">
 
-<!--        Repeat Button-->
-        <ImageButton
-            android:id="@+id/repeatBtnPA"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/repeat_icon"
-            android:background="?attr/selectableItemBackground"
-            android:contentDescription="@string/repeat_btn"
-            android:layout_weight="1"
-            tools:ignore="NestedWeights"
-            app:tint="@color/cool_pink" />
+
+
 
 <!--        Equalizer Button-->
         <ImageButton
@@ -221,7 +235,8 @@
             android:background="?attr/selectableItemBackground"
             android:contentDescription="@string/equalizer_btn"
             android:layout_weight="1"
-            app:tint="@color/cool_pink" />
+            app:tint="@color/cool_pink"
+            tools:ignore="NestedWeights" />
 
 <!--        Timer Button-->
         <ImageButton

@@ -22,25 +22,25 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/nextBtnNP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         app:icon="@drawable/next_icon"
         app:iconTint="@color/white"
-        android:backgroundTint="@android:color/transparent"
+        android:backgroundTint="?attr/colorSecondary"
         android:layout_centerVertical="true"
-        app:iconSize="35dp"
+        app:iconSize="30dp"
         android:outlineProvider="none"
-        android:layout_marginEnd="10dp" />
+        android:layout_marginEnd="5dp"
+        tools:ignore="ContentDescription" />
 
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/playPauseBtnNP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:icon="@drawable/play_icon"
         app:iconTint="@color/white"
-        app:shapeAppearanceOverlay="@style/curved"
         android:backgroundTint="?attr/colorSecondary"
         android:layout_centerVertical="true"
         app:iconSize="35dp"

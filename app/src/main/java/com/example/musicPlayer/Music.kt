@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import com.google.android.material.color.MaterialColors
 import java.io.File
 import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 import kotlin.system.exitProcess
 
 
@@ -35,20 +36,27 @@ fun getImgArt(path: String): ByteArray? {
     retriever.setDataSource(path)
     return retriever.embeddedPicture
 }
-fun setSongPosition(increment: Boolean){
-    if(!PlayerActivity.repeat){
-        if(increment)
-        {
-            if(PlayerActivity.musicListPA.size - 1 == PlayerActivity.songPosition)
-                PlayerActivity.songPosition = 0
-            else ++PlayerActivity.songPosition
-        }else{
-            if(0 == PlayerActivity.songPosition)
-                PlayerActivity.songPosition = PlayerActivity.musicListPA.size-1
-            else --PlayerActivity.songPosition
-        }
-    }
-}
+ fun setSongPosition(increment: Boolean) {
+     if (!PlayerActivity.repeat) {
+         if (PlayerActivity.shuffle) {
+             // Nếu chế độ shuffle được bật
+             PlayerActivity.songPosition = getRandomPosition()
+         } else {
+             // Nếu chế độ shuffle không được bật
+             if (increment) {
+                 if (PlayerActivity.musicListPA.size - 1 == PlayerActivity.songPosition)
+                     PlayerActivity.songPosition = 0
+                 else
+                     ++PlayerActivity.songPosition
+             } else {
+                 if (0 == PlayerActivity.songPosition)
+                     PlayerActivity.songPosition = PlayerActivity.musicListPA.size - 1
+                 else
+                     --PlayerActivity.songPosition
+             }
+         }
+     }
+ }
 fun exitApplication(){
     if(PlayerActivity.musicService != null){
         PlayerActivity.musicService!!.audioManager.abandonAudioFocus(PlayerActivity.musicService)
@@ -93,6 +101,10 @@ fun checkPlaylist(playlist: ArrayList<Music>): ArrayList<Music>{
      dialog.getButton(android.app.AlertDialog.BUTTON_NEGATIVE)?.setBackgroundColor(
          MaterialColors.getColor(context, R.attr.dialogBtnBackground, Color.RED)
      )
+ }
+
+ fun getRandomPosition(): Int {
+     return Random.nextInt(0, PlayerActivity.musicListPA.size)
  }
 
  // ham lay color anh set background

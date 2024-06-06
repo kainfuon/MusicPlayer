@@ -42,6 +42,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         @SuppressLint("StaticFieldLeak")
         lateinit var binding: ActivityPlayerBinding
         var repeat: Boolean = false
+        var shuffle: Boolean = false
         var min15: Boolean = false
         var min30: Boolean = false
         var min60: Boolean = false
@@ -121,6 +122,16 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
                 binding.repeatBtnPA.setColorFilter(ContextCompat.getColor(this, R.color.cool_pink))
             }
         }
+        binding.shuffleBtnPA.setOnClickListener {
+            if(!shuffle){
+                shuffle = true
+                binding.shuffleBtnPA.setColorFilter(ContextCompat.getColor(this, R.color.black))
+            }else{
+                shuffle = false
+                binding.shuffleBtnPA.setColorFilter(ContextCompat.getColor(this, R.color.cool_pink))
+            }
+        }
+
         binding.equalizerBtnPA.setOnClickListener {
         try {
             val eqIntent = Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL)

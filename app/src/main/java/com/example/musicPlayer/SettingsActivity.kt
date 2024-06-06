@@ -31,24 +31,24 @@ class SettingsActivity : AppCompatActivity() {
         binding.coolBlackTheme.setOnClickListener { saveTheme(1) }
         binding.settingImage.setImageResource(R.drawable.settings_icon)
         binding.versionName.text = setVersionDetails()
-        binding.sortBtn.setOnClickListener {
-            val menuList = arrayOf("Recently Added", "Song Title", "File Size")
-            var currentSort = MainActivity.sortOrder
-            val builder = MaterialAlertDialogBuilder(this)
-            builder.setTitle("Sorting")
-                .setPositiveButton("OK"){ _, _ ->
-                    val editor = getSharedPreferences("SORTING", MODE_PRIVATE).edit()
-                    editor.putInt("sortOrder", currentSort)
-                    editor.apply()
-                }
-                .setSingleChoiceItems(menuList, currentSort){ _,which->
-                    currentSort = which
-                }
-            val customDialog = builder.create()
-            customDialog.show()
-
-            setDialogBtnBackground(this, customDialog)
-        }
+//        binding.sortBtn.setOnClickListener {
+//            val menuList = arrayOf("Recently Added", "Song Title", "File Size")
+//            var currentSort = MainActivity.sortOrder
+//            val builder = MaterialAlertDialogBuilder(this)
+//            builder.setTitle("Sorting")
+//                .setPositiveButton("OK"){ _, _ ->
+//                    val editor = getSharedPreferences("SORTING", MODE_PRIVATE).edit()
+//                    editor.putInt("sortOrder", currentSort)
+//                    editor.apply()
+//                }
+//                .setSingleChoiceItems(menuList, currentSort){ _,which->
+//                    currentSort = which
+//                }
+//            val customDialog = builder.create()
+//            customDialog.show()
+//
+//            setDialogBtnBackground(this, customDialog)
+//        }
     }
 
     private fun saveTheme(index: Int){
