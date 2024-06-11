@@ -16,16 +16,19 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="0dp">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/backBtnPLA"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/back_icon"
+            android:background="@drawable/custom_selectable_background"
+            android:padding="10dp"
+            android:layout_marginStart="5dp"
             android:contentDescription="@string/back_btn"
-            android:backgroundTint="@android:color/transparent"
-            app:tint="@color/black"
-            android:padding="5dp"/>
+            app:tint="?colorOnPrimary"
+            android:clickable="true"
+            android:focusable="true" />
 
         <TextView
             android:layout_width="match_parent"
@@ -33,7 +36,7 @@
             android:layout_marginEnd="55dp"
             android:layout_marginTop="20dp"
             android:contentDescription="@string/playlist_btn"
-            android:gravity="center|top"
+            android:gravity="center"
             android:text="@string/playlist_btn"
             android:textColor="@color/black"
             android:textSize="22sp"

@@ -18,16 +18,18 @@
         android:layout_weight="0.3">
 
 <!--    Back Button-->
-        <ImageButton
+        <ImageView
             android:id="@+id/backBtnPA"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/back_icon"
-            android:background="?attr/selectableItemBackground"
+            android:background="@drawable/custom_selectable_background"
+            android:padding="10dp"
             android:layout_marginStart="5dp"
             android:contentDescription="@string/back_btn"
-            app:tint="?colorOnPrimary"
-            android:padding="10dp" />
+            app:tint="?colorOnPrimary" />
+
+
 
         <TextView
             android:layout_width="0dp"
@@ -46,7 +48,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/favourite_empty_icon"
-            android:background="?attr/selectableItemBackground"
+            android:backgroundTint="@android:color/transparent"
             android:layout_marginEnd="20dp"
             android:contentDescription="@string/favourites_btn"
             app:tint="@android:color/holo_red_dark" />
@@ -55,12 +57,12 @@
 <!--    Current Song Image-->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/songImgPA"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
-        android:layout_margin="15dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_margin="10dp"
         android:padding="5dp"
         android:src="@drawable/music_player_icon_slash_screen"
-        app:shapeAppearanceOverlay="@style/curved"
+        app:shapeAppearanceOverlay="@style/circle"
         app:strokeWidth="0dp"/>
 
 
@@ -155,7 +157,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:src="@drawable/shuffle_icon"
-            android:background="?attr/selectableItemBackground"
+            android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/repeat_btn"
             android:layout_marginHorizontal="20dp"
             tools:ignore="NestedWeights"
@@ -204,7 +206,7 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:src="@drawable/repeat_icon"
-            android:background="?attr/selectableItemBackground"
+            android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/repeat_btn"
             android:layout_marginHorizontal="20dp"
             app:tint="@color/cool_pink" />
@@ -220,8 +222,9 @@
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="60dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:layout_weight="0.2">
+        android:layout_weight="0">
 
 
 
@@ -244,7 +247,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/timer_icon"
-            android:background="?attr/selectableItemBackground"
+            android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/timer_btn"
             android:layout_weight="1"
             app:tint="@color/cool_pink" />
@@ -255,7 +258,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/share_icon"
-            android:background="?attr/selectableItemBackground"
+            android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/share_btn"
             android:layout_weight="1"
             app:tint="@color/cool_pink" />
@@ -267,7 +270,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/volume_icon"
-            android:background="?attr/selectableItemBackground"
+            android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/share_btn"
             android:layout_weight="1"
             app:tint="@color/cool_pink" />
