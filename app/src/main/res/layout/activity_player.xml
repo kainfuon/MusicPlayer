@@ -20,8 +20,8 @@
 <!--    Back Button-->
         <ImageView
             android:id="@+id/backBtnPA"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/back_icon"
             android:background="@drawable/custom_selectable_background"
             android:padding="8dp"

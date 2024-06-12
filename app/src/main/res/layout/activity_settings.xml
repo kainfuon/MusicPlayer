@@ -16,23 +16,22 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"/>
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp"
+        android:padding="16dp"
+        android:gravity="center|start"
+        android:text="@string/set_theme"
+
+        android:textSize="20sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:paddingHorizontal="20dp"
         android:orientation="horizontal"
         android:background="@color/white">
-
-
-
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="2dp"
-            android:gravity="center|start"
-            android:text="@string/set_theme"
-            android:textSize="20sp" />
-
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/coolPinkTheme"
             android:layout_width="0dp"
@@ -40,27 +39,27 @@
             android:layout_weight="1"
             android:src="@drawable/circle_icon"
             android:tint="@color/cool_pink"/>
-<!--        <com.google.android.material.imageview.ShapeableImageView-->
-<!--            android:id="@+id/coolBlueTheme"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1"-->
-<!--            android:src="@drawable/circle_icon"-->
-<!--            android:tint="@color/cool_blue"/>-->
-<!--        <com.google.android.material.imageview.ShapeableImageView-->
-<!--            android:id="@+id/coolPurpleTheme"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1"-->
-<!--            android:src="@drawable/circle_icon"-->
-<!--            android:tint="@color/purple_500"/>-->
-<!--        <com.google.android.material.imageview.ShapeableImageView-->
-<!--            android:id="@+id/coolGreenTheme"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1"-->
-<!--            android:src="@drawable/circle_icon"-->
-<!--            android:tint="@color/cool_green"/>-->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coolBlueTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/circle_icon"
+            android:tint="@color/cool_blue"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coolPurpleTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/circle_icon"
+            android:tint="@color/purple_500"/>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/coolGreenTheme"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/circle_icon"
+            android:tint="@color/cool_green"/>
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/coolBlackTheme"
             android:layout_width="0dp"
@@ -69,8 +68,8 @@
             android:src="@drawable/circle_icon"
             android:tint="@color/black"/>
 
-    </LinearLayout>
 
+        </LinearLayout>
 <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="60dp"-->

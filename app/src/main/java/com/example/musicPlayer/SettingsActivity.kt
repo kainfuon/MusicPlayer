@@ -19,16 +19,16 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         when(MainActivity.themeIndex){
             0 -> binding.coolPinkTheme.setBackgroundColor(Color.GRAY)
-//            1 -> binding.coolBlueTheme.setBackgroundColor(Color.YELLOW)
-//            2 -> binding.coolPurpleTheme.setBackgroundColor(Color.YELLOW)
-//            3 -> binding.coolGreenTheme.setBackgroundColor(Color.YELLOW)
-            1 -> binding.coolBlackTheme.setBackgroundColor(Color.GRAY)
+            1 -> binding.coolBlueTheme.setBackgroundColor(Color.YELLOW)
+            2 -> binding.coolPurpleTheme.setBackgroundColor(Color.YELLOW)
+            3 -> binding.coolGreenTheme.setBackgroundColor(Color.YELLOW)
+            4 -> binding.coolBlackTheme.setBackgroundColor(Color.GRAY)
         }
         binding.coolPinkTheme.setOnClickListener { saveTheme(0) }
-//        binding.coolBlueTheme.setOnClickListener { saveTheme(1) }
-//        binding.coolPurpleTheme.setOnClickListener { saveTheme(2) }
-//        binding.coolGreenTheme.setOnClickListener { saveTheme(3) }
-        binding.coolBlackTheme.setOnClickListener { saveTheme(1) }
+        binding.coolBlueTheme.setOnClickListener { saveTheme(1) }
+        binding.coolPurpleTheme.setOnClickListener { saveTheme(2) }
+        binding.coolGreenTheme.setOnClickListener { saveTheme(3) }
+        binding.coolBlackTheme.setOnClickListener { saveTheme(4) }
         binding.settingImage.setImageResource(R.drawable.settings_icon)
         binding.versionName.text = setVersionDetails()
 //        binding.sortBtn.setOnClickListener {

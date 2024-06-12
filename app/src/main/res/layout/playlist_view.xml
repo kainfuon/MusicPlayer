@@ -34,7 +34,7 @@
         android:marqueeRepeatLimit="marquee_forever"
         android:singleLine="true"
         android:text="@string/playlist_name"
-        android:textColor="@color/black"
+        android:textColor="?colorOnPrimary"
         android:textSize="18sp" />
 
     <ImageButton
@@ -47,7 +47,7 @@
         android:backgroundTint="@android:color/transparent"
         android:contentDescription="@string/playlist_delete"
         android:src="@drawable/delete_icon"
-        app:tint="@color/black" />
+        app:tint="?colorOnPrimary" />
 
 
 

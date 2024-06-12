@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/backBtnPLA"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/back_icon"
             android:background="@drawable/custom_selectable_background"
@@ -27,8 +27,7 @@
             android:layout_marginStart="10dp"
             android:contentDescription="@string/back_btn"
             app:tint="?colorOnPrimary"
-            android:clickable="true"
-            android:focusable="true" />
+             />
 
         <TextView
             android:layout_width="match_parent"
@@ -38,7 +37,7 @@
             android:contentDescription="@string/playlist_btn"
             android:gravity="center"
             android:text="@string/playlist_btn"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="22sp"
             android:textStyle="bold" />
     </LinearLayout>

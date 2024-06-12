@@ -24,8 +24,8 @@
 
         <ImageView
             android:id="@+id/backBtnFA"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/back_icon"
             android:background="@drawable/custom_selectable_background"
@@ -56,7 +56,7 @@
             android:contentDescription="@string/favourites_btn"
             android:gravity="center"
             android:text="@string/favourites_btn"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="22sp"
             android:textStyle="bold" />
     </LinearLayout>

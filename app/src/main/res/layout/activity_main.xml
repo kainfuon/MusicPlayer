@@ -43,7 +43,7 @@
                         android:drawableTop="@drawable/shuffle_icon"
                         android:text="@string/shuffle_btn"
                         android:textAllCaps="false"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnPrimary"
                         />
                     <!--Favourites Button-->
                     <Button
@@ -56,7 +56,7 @@
                         android:drawableTop="@drawable/favourite_icon"
                         android:text="@string/favourites_btn"
                         android:textAllCaps="false"
-                        android:textColor="@color/black" />
+                        android:textColor="?attr/colorOnPrimary" />
                     <!--Playlists Button-->
                     <Button
                         android:id="@+id/playlistBtn"
@@ -68,7 +68,7 @@
                         android:drawableTop="@drawable/playlist_icon"
                         android:text="@string/playlist_btn"
                         android:textAllCaps="false"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnPrimary"
                         />
 
 
@@ -117,10 +117,10 @@
 
                     <TextView
                         android:id="@+id/totalSongs"
-                        android:layout_width="320dp"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:text="@string/total_songs"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="18sp" />
 
                     <com.google.android.material.imageview.ShapeableImageView
@@ -129,7 +129,7 @@
                         android:layout_height="30dp"
                         android:padding="5dp"
                         android:src="@drawable/sort_icon"
-                        android:tint="@color/black" />
+                        android:tint="?attr/colorOnPrimary" />
 
                 </LinearLayout>
 
