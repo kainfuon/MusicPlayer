@@ -20,12 +20,12 @@
 <!--    Back Button-->
         <ImageView
             android:id="@+id/backBtnPA"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:src="@drawable/back_icon"
             android:background="@drawable/custom_selectable_background"
-            android:padding="10dp"
-            android:layout_marginStart="5dp"
+            android:padding="8dp"
+            android:layout_marginStart="10dp"
             android:contentDescription="@string/back_btn"
             app:tint="?colorOnPrimary" />
 
@@ -84,7 +84,8 @@
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:orientation="horizontal"
-        android:layout_margin="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="0">
 
 <!--        <TextView-->
@@ -274,6 +275,19 @@
             android:contentDescription="@string/share_btn"
             android:layout_weight="1"
             app:tint="@color/cool_pink" />
+
+
+        <!--        Playlist Button-->
+        <ImageButton
+            android:id="@+id/playlistBtnPA"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/playlist_icon"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/equalizer_btn"
+            android:layout_weight="1"
+            app:tint="@color/cool_pink"
+            tools:ignore="NestedWeights" />
 
     </LinearLayout>
 

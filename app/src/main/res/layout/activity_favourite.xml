@@ -24,13 +24,13 @@
 
         <ImageView
             android:id="@+id/backBtnFA"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/back_icon"
             android:background="@drawable/custom_selectable_background"
-            android:padding="10dp"
-            android:layout_marginStart="5dp"
+            android:padding="8dp"
+            android:layout_marginStart="10dp"
             android:contentDescription="@string/back_btn"
             app:tint="?colorOnPrimary"
             android:clickable="true"
@@ -50,9 +50,9 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:layout_marginEnd="55dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:contentDescription="@string/favourites_btn"
             android:gravity="center"
             android:text="@string/favourites_btn"

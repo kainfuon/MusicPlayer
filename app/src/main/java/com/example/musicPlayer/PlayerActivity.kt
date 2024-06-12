@@ -18,6 +18,7 @@ import android.os.Bundle
 import android.os.IBinder
 import android.provider.MediaStore
 import android.view.LayoutInflater
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.Toast
@@ -29,7 +30,11 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.example.musicPlayer.databinding.ActivityPlayerBinding
+import com.example.musicPlayer.databinding.AddPlaylistDialogBinding
 import com.example.musicPlayer.databinding.AudioBoosterBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCompletionListener {
 
@@ -170,6 +175,28 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             startActivity(Intent.createChooser(shareIntent, "Sharing Music File!!"))
             
         }
+
+        binding.playlistBtnPA.setOnClickListener{
+
+            val builder = MaterialAlertDialogBuilder(this)
+            builder.setTitle("Add to Playlist")
+                .setMessage("Do you want to add song to playlist?")
+                .setPositiveButton("Exits"){ dialog, _ ->
+                    dialog.dismiss()
+                    showListsPlaylistDialog()
+
+                }
+                .setNegativeButton("New"){dialog, _ ->
+                    dialog.dismiss()
+                    showCreatePlaylistDialog()
+                }
+            val customDialog = builder.create()
+            customDialog.show()
+
+            setDialogBtnBackground(this, customDialog)
+        }
+
+
         binding.favouriteBtnPA.setOnClickListener {
             fIndex = favouriteChecker(musicListPA[songPosition].id)
             if(isFavourite){
@@ -390,5 +417,53 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
         if(shuffle) musicListPA.shuffle()
         setLayout()
         if(!playNext) PlayNext.playNextList = ArrayList()
+    }
+
+    private fun showListsPlaylistDialog() {
+        startActivity(Intent(this, SelectPlaylistActivity::class.java))
+    }
+
+    private fun showCreatePlaylistDialog() {
+        val showCreatePlaylistDialog = LayoutInflater.from(this@PlayerActivity).inflate(R.layout.add_playlist_dialog, binding.root, false)
+        val binder = AddPlaylistDialogBinding.bind(showCreatePlaylistDialog)
+        val builder = MaterialAlertDialogBuilder(this)
+        val dialog = builder.setView(showCreatePlaylistDialog)
+            .setTitle("Playlist Details")
+            .setPositiveButton("ADD"){ dialog, _ ->
+                val playlistName = binder.playlistName.text
+                val createdBy = binder.yourName.text
+                if(playlistName != null && createdBy != null)
+                    if(playlistName.isNotEmpty() && createdBy.isNotEmpty())
+                    {
+                        addPlaylist(playlistName.toString(), createdBy.toString())
+
+                    }
+                dialog.dismiss()
+            }.create()
+        dialog.show()
+        setDialogBtnBackground(this, dialog)
+
+    }
+
+    private fun addPlaylist(name: String, createdBy: String){
+        var playlistExists = false
+        for(i in PlaylistActivity.musicPlaylist.ref) {
+            if (name == i.name){
+                playlistExists = true
+                break
+            }
+        }
+        if(playlistExists) Toast.makeText(this, "Playlist Exist!!", Toast.LENGTH_SHORT).show()
+        else {
+            val tempPlaylist = Playlist()
+            tempPlaylist.name = name
+            tempPlaylist.playlist = ArrayList()
+            tempPlaylist.createdBy = createdBy
+            val calendar = Calendar.getInstance().time
+            val sdf = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH)
+            tempPlaylist.createdOn = sdf.format(calendar)
+            PlaylistActivity.musicPlaylist.ref.add(tempPlaylist)
+            tempPlaylist.playlist.add(musicListPA[songPosition])
+        }
     }
 }

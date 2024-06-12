@@ -12,7 +12,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.example.musicPlayer.databinding.PlaylistViewBinding
 
-class PlaylistViewAdapter(private val context: Context, private var playlistList: ArrayList<Playlist>) : RecyclerView.Adapter<PlaylistViewAdapter.MyHolder>() {
+class PlaylistViewAdapter(private val context: Context, private var playlistList: ArrayList<Playlist>,
+                          private val SelectPlaylistActivity: Boolean = false) : RecyclerView.Adapter<PlaylistViewAdapter.MyHolder>() {
 
     class MyHolder(binding: PlaylistViewBinding) : RecyclerView.ViewHolder(binding.root) {
         val image = binding.playlistImg
@@ -58,6 +59,14 @@ class PlaylistViewAdapter(private val context: Context, private var playlistList
                 .load(PlaylistActivity.musicPlaylist.ref[position].playlist[0].artUri)
                 .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())
                 .into(holder.image)
+        }
+        when {
+            SelectPlaylistActivity -> {
+                holder.root.setOnClickListener {
+                    PlaylistActivity.musicPlaylist.ref[position].playlist.add(PlayerActivity.musicListPA[PlayerActivity.songPosition])
+                    holder.root.setBackgroundColor(ContextCompat.getColor(context, R.color.cool_pink))
+                }
+            }
         }
     }
 
