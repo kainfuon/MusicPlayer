@@ -14,7 +14,7 @@
     //Theme for Activities pink
     <style name="coolPink" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="themeColor">@color/cool_pink</item>
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/black_100</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/black</item>
         <item name="colorSecondary">@color/pink_100</item>
@@ -44,7 +44,7 @@
     //new dark Theme
     <style name="coolBlack" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="themeColor">@color/black</item>
-        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/black_100</item>
@@ -70,7 +70,7 @@
 
     <style name="coolBlue" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="themeColor">@color/cool_blue</item>
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/black_100</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/black</item>
         <item name="colorSecondary">@color/teal_200</item>
@@ -83,7 +83,7 @@
     </style>
     <style name="coolPurple" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="themeColor">@color/purple_500</item>
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/black_100</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/black</item>
         <item name="colorSecondary">@color/teal_200</item>
@@ -96,7 +96,7 @@
     </style>
     <style name="coolGreen" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="themeColor">@color/cool_green</item>
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/black_100</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/black</item>
         <item name="colorSecondary">@color/teal_200</item>

@@ -170,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/previous_icon"
-            android:backgroundTint="?attr/colorPrimary"
+            android:backgroundTint="?dialogTextColor"
             app:iconTint="@color/pink"
             android:outlineProvider="none"
             app:iconSize="40dp"/>
@@ -195,7 +195,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/next_icon"
-            android:backgroundTint="?attr/colorPrimary"
+            android:backgroundTint="?attr/dialogTextColor"
             app:iconTint="@color/pink"
             android:outlineProvider="none"
             app:iconSize="40dp"/>
@@ -231,16 +231,28 @@
 
 
 <!--        Equalizer Button-->
+<!--        <ImageButton-->
+<!--            android:id="@+id/equalizerBtnPA"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/equalizer_icon"-->
+<!--            android:background="?attr/selectableItemBackground"-->
+<!--            android:contentDescription="@string/equalizer_btn"-->
+<!--            android:layout_weight="1"-->
+<!--            app:tint="@color/cool_pink"-->
+<!--            tools:ignore="NestedWeights" />-->
+
+
+        <!--        Share Button-->
         <ImageButton
-            android:id="@+id/equalizerBtnPA"
+            android:id="@+id/shareBtnPA"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@drawable/equalizer_icon"
-            android:background="?attr/selectableItemBackground"
-            android:contentDescription="@string/equalizer_btn"
+            android:src="@drawable/share_icon"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="@string/share_btn"
             android:layout_weight="1"
-            app:tint="@color/cool_pink"
-            tools:ignore="NestedWeights" />
+            app:tint="@color/cool_pink" />
 
 <!--        Timer Button-->
         <ImageButton
@@ -253,16 +265,18 @@
             android:layout_weight="1"
             app:tint="@color/cool_pink" />
 
-<!--        Share Button-->
+
+        <!--        Playlist Button-->
         <ImageButton
-            android:id="@+id/shareBtnPA"
+            android:id="@+id/playlistBtnPA"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@drawable/share_icon"
+            android:src="@drawable/ic_queue_music"
             android:backgroundTint="@android:color/transparent"
-            android:contentDescription="@string/share_btn"
+            android:contentDescription="@string/equalizer_btn"
             android:layout_weight="1"
-            app:tint="@color/cool_pink" />
+            app:tint="@color/cool_pink"
+            tools:ignore="NestedWeights" />
 
 
         <!--       Volume Button-->
@@ -275,19 +289,6 @@
             android:contentDescription="@string/share_btn"
             android:layout_weight="1"
             app:tint="@color/cool_pink" />
-
-
-        <!--        Playlist Button-->
-        <ImageButton
-            android:id="@+id/playlistBtnPA"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/playlist_icon"
-            android:background="?attr/selectableItemBackground"
-            android:contentDescription="@string/equalizer_btn"
-            android:layout_weight="1"
-            app:tint="@color/cool_pink"
-            tools:ignore="NestedWeights" />
 
     </LinearLayout>
 

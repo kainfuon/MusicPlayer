@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="@string/about"
             android:textSize="18sp"
+            android:gravity="start|end"
             android:layout_margin="16dp"/>
 
 

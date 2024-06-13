@@ -137,15 +137,15 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             }
         }
 
-        binding.equalizerBtnPA.setOnClickListener {
-        try {
-            val eqIntent = Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL)
-            eqIntent.putExtra(AudioEffect.EXTRA_AUDIO_SESSION, musicService!!.mediaPlayer!!.audioSessionId)
-            eqIntent.putExtra(AudioEffect.EXTRA_PACKAGE_NAME, baseContext.packageName)
-            eqIntent.putExtra(AudioEffect.EXTRA_CONTENT_TYPE, AudioEffect.CONTENT_TYPE_MUSIC)
-            startActivityForResult(eqIntent, 13)
-        }catch (e: Exception){Toast.makeText(this,  "Equalizer Feature not Supported!!", Toast.LENGTH_SHORT).show()}
-        }
+//        binding.equalizerBtnPA.setOnClickListener {
+//        try {
+//            val eqIntent = Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL)
+//            eqIntent.putExtra(AudioEffect.EXTRA_AUDIO_SESSION, musicService!!.mediaPlayer!!.audioSessionId)
+//            eqIntent.putExtra(AudioEffect.EXTRA_PACKAGE_NAME, baseContext.packageName)
+//            eqIntent.putExtra(AudioEffect.EXTRA_CONTENT_TYPE, AudioEffect.CONTENT_TYPE_MUSIC)
+//            startActivityForResult(eqIntent, 13)
+//        }catch (e: Exception){Toast.makeText(this,  "Equalizer Feature not Supported!!", Toast.LENGTH_SHORT).show()}
+//        }
         binding.timerBtnPA.setOnClickListener {
             val timer = min15 || min30 || min60
             if(!timer) showBottomSheetDialog()
@@ -181,7 +181,7 @@ class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCom
             val builder = MaterialAlertDialogBuilder(this)
             builder.setTitle("Add to Playlist")
                 .setMessage("Do you want to add song to playlist?")
-                .setPositiveButton("Exits"){ dialog, _ ->
+                .setPositiveButton("List"){ dialog, _ ->
                     dialog.dismiss()
                     showListsPlaylistDialog()
 
